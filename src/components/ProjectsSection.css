@@ -1,0 +1,47 @@
+.projects-section {
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem;
+  background-color: #519872; /* A nice green or keep it matching the theme? */
+  background-color: #2D3748; /* Dark theme for projects looks nice */
+  color: white;
+}
+
+.projects-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: white;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.projects-section h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+  
+  .projects-section h2 {
+    font-size: 2rem;
+  }
+}
