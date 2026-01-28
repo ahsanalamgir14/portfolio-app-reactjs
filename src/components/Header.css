@@ -3,11 +3,12 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #18181b; /* Tailwind gray-900 */
+  background-color: #18181b;
   color: white;
-  z-index: 50; /* Tailwind z-50 */
+  z-index: 50;
   transition: transform 0.3s ease-in-out;
-  height: 64px; /* Fixed height for desktop */
+  height: 64px;
+  width: 100%;
 }
 
 .header.show {
@@ -18,28 +19,39 @@
   transform: translateY(-100%);
 }
 
+/* 
+  Enforce Flexbox Layout 
+  - justify-content: space-between -> Pushes children to far edges
+  - align-items: center -> Vertically centers
+  - padding: 0 2rem -> Adds horizontal breathing room
+*/
 nav {
-  display: flex;
-  justify-content: space-between; /* Space out items */
-  align-items: center; /* Center vertically */
-  max-width: 1280px; /* Tailwind max-w-7xl */
-  margin: 0 auto; /* mx-auto */
-  padding: 0 1.5rem; /* px-6 */
-  height: 100%;
+  display: flex !important; /* Force flex */
+  flex-direction: row !important; /* Force row direction */
+  justify-content: space-between !important; /* Force spacing */
+  align-items: center;
   width: 100%;
+  max-width: 1280px; /* Optional: Constrain max width for large screens */
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
+  box-sizing: border-box;
 }
 
+/* Social Icons Container (Left Side) */
 .social-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* gap-6 */
+  gap: 1.5rem;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .social-links a {
-  color: #d1d5db; /* Tailwind gray-300 */
+  color: #d1d5db;
   transition: color 0.2s, transform 0.2s;
-  display: flex; /* Ensure icon centers */
+  display: flex;
   align-items: center;
+  font-size: 1.25rem; /* Ensure icons are visible size */
 }
 
 .social-links a:hover {
@@ -47,44 +59,47 @@ nav {
   transform: scale(1.1);
 }
 
+/* Navigation Links Container (Right Side) */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem; /* gap-8 */
+  gap: 2rem;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .nav-links a {
-  color: #e5e7eb; /* Tailwind gray-200 */
-  font-weight: 500; /* font-medium */
+  color: #e5e7eb;
+  font-weight: 500;
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.2s;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .nav-links a:hover {
   color: white;
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-  .header {
-    height: auto; /* Allow auto height on mobile */
-    padding: 1rem 0;
-  }
-
+/* Mobile Responsive Adjustments */
+@media (max-width: 600px) {
+  /* Only stack on very small screens if necessary, 
+     but user wants space-between so we keep it row if possible 
+     or just adjust padding */
+  
   nav {
-    flex-direction: column; /* Stack vertically */
-    gap: 1rem; /* Space between rows */
+    padding: 0 1rem; /* Reduce padding on mobile */
   }
 
   .social-links {
-    justify-content: center; /* Center icons horizontally */
-    width: 100%;
+    gap: 1rem;
   }
 
   .nav-links {
-    justify-content: center; /* Center links horizontally */
-    width: 100%;
-    gap: 1.5rem;
+    gap: 1rem;
+  }
+  
+  /* If content is too wide, we might need to hide text or adjust size */
+  .nav-links a {
+    font-size: 0.9rem;
   }
 }
