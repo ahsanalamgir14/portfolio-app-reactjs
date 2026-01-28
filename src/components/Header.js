@@ -56,10 +56,10 @@ const Header = ({ show }) => {
           ))}
         </div>
         <div className="nav-links">
-          <a href="#projects" onClick={handleClick('projects')}>
+          <a href="#projects-section" onClick={handleClick('projects')}>
             Projects
           </a>
-          <a href="#contact" onClick={handleClick('contact-me')}>
+          <a href="#contact-me-section" onClick={handleClick('contact-me')}>
             Contact Me
           </a>
         </div>

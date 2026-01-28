@@ -6,7 +6,7 @@ const LandingSection = () => {
     <section id="landing-section" className="landing-section">
       <div className="landing-content">
         <img 
-          src="https://via.placeholder.com/200" 
+          src="https://picsum.photos/200" 
           alt="Avatar" 
           className="avatar"
         />
